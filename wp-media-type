@@ -1,0 +1,44 @@
+<?php
+/*
+Plugin Name: WP Media Type
+Plugin URI: http://www.sanjaybhowmick.com/categorize-media-type-for-wordpress-media-library/
+Description: Categorize Media Type for WordPress Media Library
+Author: Sanjay Bhowmick - Wavesdream
+Version: 1.0
+Author URI: http://www.sanjaybhowmick.com/ 
+*/
+function modify_custom_mime_types( $custom_mime_types ) {
+
+	// Here are the different media types - you can define other media types too.
+
+	// Document Types
+	$custom_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+	
+	$custom_mime_types['application/msword'] = array( __( 'DOCs' ), __( 'Manage DOCs' ), _n_noop( 'DOC <span class="count">(%s)</span>', 'DOCs <span class="count">(%s)</span>' ) );
+	
+	// Archive Types
+	$custom_mime_types['application/zip'] = array( __( 'ZIPs' ), __( 'Manage ZIPs' ), _n_noop( 'ZIP <span class="count">(%s)</span>', 'ZIPs <span class="count">(%s)</span>' ) );
+	
+	// Script Types
+	$custom_mime_types['application/javascript'] = array( __( 'JSs' ), __( 'Manage JS' ), _n_noop( 'JS <span class="count">(%s)</span>', 'JSs <span class="count">(%s)</span>' ) );
+	
+	// Video Types
+	$custom_mime_types['application/x-shockwave-flash'] = array( __( 'SWFs' ), __( 'Manage SWFs' ), _n_noop( 'SWF <span class="count">(%s)</span>', 'SWFs <span class="count">(%s)</span>' ) );
+	
+	$custom_mime_types['video/quicktime'] = array( __( 'MOVs' ), __( 'Manage MOVs' ), _n_noop( 'MOV <span class="count">(%s)</span>', 'MOVs <span class="count">(%s)</span>' ) );
+	
+	$custom_mime_types['video/x-flv'] = array( __( 'FLVs' ), __( 'Manage FLVs' ), _n_noop( 'FLV <span class="count">(%s)</span>', 'FLVs <span class="count">(%s)</span>' ) );
+	
+	$custom_mime_types['video/avi'] = array( __( 'AVIs' ), __( 'Manage AVIs' ), _n_noop( 'AVI <span class="count">(%s)</span>', 'AVI <span class="count">(%s)</span>' ) );
+	
+	$custom_mime_types['video/divx'] = array( __( 'DIVXs' ), __( 'Manage DIVXs' ), _n_noop( 'DIVX <span class="count">(%s)</span>', 'DIVX <span class="count">(%s)</span>' ) );
+
+	// then we return the $post_mime_types variable
+	return $custom_mime_types;
+
+}
+
+// Add Filter Hook
+add_filter( 'post_mime_types', 'modify_custom_mime_types' );
+
+?>
